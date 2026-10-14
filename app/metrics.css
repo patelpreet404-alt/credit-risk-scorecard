@@ -1,0 +1,275 @@
+.metric-card .sparkline {
+  width: 82px;
+  height: 18px;
+  right: 12px;
+  bottom: 6px;
+  opacity: 0.72;
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+/* Ledgerline's portfolio palette: warm paper, ink blue, and restrained risk hues. */
+:root {
+  --ink: #1d2b36;
+  --muted: #65747e;
+  --line: #e5e0d8;
+  --canvas: #f4f1eb;
+  --panel: #fffdfa;
+  --sidebar: #192b39;
+  --sidebar-muted: #aab7bf;
+  --lime: #bd945d;
+  --lime-strong: #a87c48;
+  --green: #647f6d;
+  --blue: #55758d;
+  --amber: #ad8048;
+  --red: #b46852;
+  --shadow: 0 2px 7px rgb(35 43 47 / 3%), 0 12px 35px rgb(35 43 47 / 3%);
+}
+
+::selection { background: #d8e2e8; color: #1d2b36; }
+::-webkit-scrollbar-track { background: #ece8e1; }
+::-webkit-scrollbar-thumb { background: #c5c9c7; border-color: #ece8e1; }
+button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible { outline-color: #55758d; }
+.topbar, .surface, .metric-card:not(.metric-dark), .application-detail-drawer { background: #fffdfa; }
+.sidebar { background: #192b39; }
+.workspace-select { background: #223746; border-color: #344957; }
+.workspace-logo { background: #d9e1e4; color: #243744; }
+.nav-item:hover { background: #263b49; }
+.nav-item.active { background: #2b414f; }
+.nav-count { background: #344957; }
+.sidebar-model-card { background: #203442; border-color: #354a57; }
+.sidebar-health-track { background: #40535e; }
+.user-profile { border-color: #354957; }
+.main-area, .page-content { color: var(--ink); }
+.button-lime { background: #55758d; color: #fffdfa; }
+.button-lime:hover { background: #42647d; }
+.button-dark { background: #243947; color: #fffdfa; }
+.button-dark:hover { background: #314b5b; }
+.button-outline { background: #fffdfa; border-color: #d9d4cb; }
+.button-outline:hover { background: #f7f4ee; border-color: #b9c0c1; }
+.metric-dark { background: #213746; border-color: #213746; }
+.notice-bar { background: #edf1f2; border-color: #dfe6e8; color: #435967; }
+.notice-icon { color: #55758d; background: #dfe8eb; }
+.notice-bar strong { color: #263e4c; }
+.notice-bar button, .chart-summary a, .segment-foot a, .model-link, .view-all { color: #4c6e84; }
+.change-positive, .change-good { color: #5e7c68; }
+.metric-dark .change-positive { color: #c5d6ca; }
+.mini-scale b { background: #66849a; }
+.chart-grid { stroke: #ebe7e0; }
+.legend-balance { background: #55758d; }
+.legend-loss { background: #b46852; }
+.portfolio-line { stroke: #55758d; }
+.loss-line { stroke: #b46852; }
+.chart-point { stroke: #55758d; }
+.model-status { background: #e9efeb; color: #55715f; }
+.roc-curve { stroke: #55758d; }
+.roc-fill { fill: #87a5b7; }
+.good-dot { background: #64816d; }
+.risk-number.low { color: #5e7c68; }
+.risk-number.medium { color: #9b7544; }
+.risk-number.high { color: #ad5e4a; }
+.status-pill.approved { background: #e9efeb; color: #55715f; }
+.status-pill.review { background: #f4eee3; color: #956e3d; }
+.status-pill.declined { background: #f5e9e5; color: #a95c49; }
+.application-detail-scrim { background: rgb(25 43 57 / 38%); }
+.application-detail-close { color: #596d79; }
+.application-score-summary { border-color: #e4e8e7; background: #f3f5f3; }
+.application-score-summary span, .application-score-summary small { color: #687a84; }
+.application-detail-list { border-color: #e8e4dd; }
+.application-detail-list div { border-color: #e8e4dd; }
+.application-detail-list span { color: #71808a; }
+.application-detail-list strong { color: #263a47; }
+.application-detail-note { background: #f3efe8; color: #786f61; }
+.model-banner-icon { color: #4f7187; background: #e9eff1; }
+.model-banner>div:nth-child(2)>strong span { color: #596f7b; background: #edf1f1; }
+.scenario-pills button { background: #fffdfa; border-color: #dfdbd3; color: #6f7d84; }
+.scenario-pills button.active { background: #243b4a; border-color: #243b4a; color: #f4f2ed; }
+.scenario-tag { color: #6e7d84; background: #f0efeb; }
+.range-control input { accent-color: #55758d; }
+.assumption-note { background: #edf1f2; color: #586e79; }
+.stress-track { background: #ece9e3; }
+.feature-bar { background: #eae7e1; }
+.iv-dot, .driver-good { background: #64816d; }
+.driver-warn { background: #ad8048; }
+.bar-warm { background: #c88b77; }
+.bar-cool { background: #8ea8b4; }
+.woe-positive { color: #ad5e4a !important; }
+.woe-negative { color: #55758d !important; }
+.lab-status { color: #647f6d; }
+.lab-status i { background: #64816d; }
+.demo-badge { color: #587266; background: #e9efeb; }
+.form-actions { border-color: #e8e4dd; }
+.form-grid label { color: #596b75; }
+.form-grid input, .form-grid select, .filter-pair select, .table-filters select { background-color: #fffdfa; border-color: #dedad2; color: #334854; }
+.form-grid input:focus, .form-grid select:focus, .filter-pair select:focus, .table-filters select:focus { border-color: #55758d; outline: 2px solid rgb(85 117 141 / 18%); }
+.result-bar { background: #ece9e3; }
+.loss-result small.loss-high { color: #ad5e4a; }
+.table-chevron:hover, .top-icon:hover { background: #eeece6; }
+.application-table tbody tr:hover { background: #f7f5f0; }
+.application-table th { border-color: #e8e4dd; }
+.application-table td { border-color: #eeebe5; color: #596b75; }
+.application-table td:first-child strong { color: #293c48; }
+.chart-summary, .health-stats>div, .model-link, .segment-foot, .woe-table th, .woe-table td { border-color: #e9e5de; }
+.metric-icon { border-color: #e8e4dd; color: #617580; }
+.metric-dark .metric-icon { border-color: #405361; color: #d2dcdf; }
+.good-dot { background: #64816d; }
+.toast { background: #213643; border-color: #3c5260; }
+.toast>span { color: #d0aa72; }
+.search-control, .table-filters label { background: #fffdfa; border-color: #dedad2; }
+.empty-state { color: #657783; }
+.surface-heading p, .welcome-row p, .view-heading p, .application-detail-sub { color: #65747e; }
+.metric-top, .metric-foot, .metric-aside, .mini-scale, .chart-legend, .chart-summary,
+.model-score>div:first-child>span, .model-score small, .health-stats span, .health-stats small,
+.application-table th, .application-table td:first-child small, .segment-label small,
+.page-footer, .updated-stamp { color: #65747e; }
+
+@media (max-width: 620px) {
+  .sidebar { box-shadow: 12px 0 30px rgb(25 43 57 / 12%); }
+}
+
+.application-detail-scrim {
+  position: fixed;
+  z-index: 40;
+  inset: 0;
+  display: flex;
+  justify-content: flex-end;
+  background: rgb(20 31 23 / 36%);
+}
+
+.application-detail-drawer {
+  position: relative;
+  width: min(440px, 100%);
+  height: 100%;
+  overflow-y: auto;
+  padding: 36px 26px 22px;
+  background: #fff;
+  box-shadow: -12px 0 40px rgb(22 34 24 / 12%);
+  animation: detail-enter 180ms ease-out;
+}
+
+.application-detail-close {
+  position: absolute;
+  top: 16px;
+  right: 17px;
+  width: 31px;
+  height: 31px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: white;
+  color: #647065;
+}
+
+.drawer-kicker {
+  color: #879287;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: .8px;
+}
+
+.application-detail-drawer h2 {
+  margin: 10px 0 4px;
+  font: 700 22px Manrope, sans-serif;
+  letter-spacing: -.6px;
+}
+
+.application-detail-sub {
+  margin: 0 0 15px;
+  color: #899389;
+  font-size: 9px;
+}
+
+.application-score-summary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 22px 0 17px;
+  padding: 18px 12px;
+  border: 1px solid #e7ece2;
+  border-radius: 7px;
+  background: #f8faf6;
+}
+
+.application-score-summary span,
+.application-score-summary small {
+  color: #7f8a7f;
+  font-size: 9px;
+}
+
+.application-score-summary strong {
+  margin: 6px 0 3px;
+  font: 700 40px/1.1 Manrope, sans-serif;
+  letter-spacing: -1.5px;
+}
+
+.application-detail-list {
+  border-top: 1px solid #edf0eb;
+}
+
+.application-detail-list div {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 12px 0;
+  border-bottom: 1px solid #edf0eb;
+  font-size: 9px;
+}
+
+.application-detail-list span {
+  color: #7d887e;
+}
+
+.application-detail-list strong {
+  max-width: 58%;
+  text-align: right;
+  font-weight: 600;
+  color: #36453a;
+}
+
+.application-detail-note {
+  margin: 17px 0;
+  padding: 10px;
+  border-radius: 5px;
+  background: #f7f5ef;
+  color: #827d6d;
+  font-size: 8px;
+  line-height: 1.55;
+}
+
+.application-detail-action {
+  width: 100%;
+}
+
+@keyframes detail-enter {
+  from { transform: translateX(14px); opacity: .7; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+.metric-card:not(.metric-dark) .metric-foot {
+  max-width: calc(100% - 18px);
+}
+
+@media (max-width: 620px) {
+  .content-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .content-grid > * {
+    min-width: 0;
+  }
+
+  .metric-card .sparkline {
+    width: 53px;
+    height: 14px;
+    right: 8px;
+    bottom: 4px;
+  }
+
+  .application-detail-drawer {
+    padding: 34px 18px 20px;
+  }
+}

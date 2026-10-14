@@ -1,0 +1,33 @@
+-- Power BI measure definitions. Confirm the active relationships and business policy
+-- before using these measures with any real lender data.
+
+Application Count = DISTINCTCOUNT(application[application_id])
+
+Approved Application Count =
+CALCULATE([Application Count], application[decision_status] = "Approved")
+
+Approval Rate = DIVIDE([Approved Application Count], [Application Count])
+
+Approved Exposure =
+CALCULATE(SUM(application[requested_amount]), application[decision_status] = "Approved")
+
+Expected Credit Loss =
+SUMX(
+    FILTER(application, application[decision_status] = "Approved"),
+    application[requested_amount] * application[probability_default] * RELATED(performance_outcome[loss_given_default])
+)
+
+Expected Loss Ratio = DIVIDE([Expected Credit Loss], [Approved Exposure])
+
+Observed 12M Default Rate =
+AVERAGEX(
+    FILTER(performance_outcome, NOT(ISBLANK(performance_outcome[default_12m]))),
+    performance_outcome[default_12m]
+)
+
+Average Risk Score = AVERAGE(application[credit_score])
+
+Applications Referred =
+CALCULATE([Application Count], application[decision_status] = "Review")
+
+Referral Rate = DIVIDE([Applications Referred], [Application Count])
